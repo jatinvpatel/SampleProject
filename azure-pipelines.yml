@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- initial_commit
+- main
 
 pool:
   vmImage: ubuntu-latest
@@ -17,5 +17,12 @@ steps:
 
 - script: |
     npm install
+  displayName: 'npm install'
+
+- script: |
+    npm run lint
+  displayName:  'npm linting'
+
+- script: |
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'npm build'
